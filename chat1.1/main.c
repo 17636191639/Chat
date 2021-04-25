@@ -18,7 +18,6 @@ int main()
 {
     global_init();
     csql_init(&my_sql, "localhost", "root", "123456", "talkdb",0,NULL,0, 7);
-    thread_pool_init(4);//线程池初始化
 
     //消息处理线程
     pthread_t pid;
@@ -41,7 +40,6 @@ int main()
     pthread_join(pid, NULL);
     pthread_join(pid2, NULL);
 
-    thread_pool_destroy();
     csql_close(&my_sql);
     global_deinit();
     close_ep_server(&g_server);
